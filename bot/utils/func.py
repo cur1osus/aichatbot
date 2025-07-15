@@ -12,7 +12,6 @@ class Function:
         self.client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
 
     def get_answer(self, chain_messages: Any) -> str:
-        print(chain_messages)
         completion = self.client.chat.completions.create(
             model="meta-llama/llama-4-scout-17b-16e-instruct",
             messages=chain_messages,

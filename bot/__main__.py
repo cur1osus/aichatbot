@@ -8,6 +8,7 @@ from functools import partial
 import msgspec
 from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
+from aiogram.enums import ParseMode
 from aiogram.client.session.aiohttp import AiohttpSession
 from aiogram.client.telegram import PRODUCTION
 from aiogram.fsm.storage.base import DefaultKeyBuilder
@@ -66,7 +67,7 @@ async def main() -> None:
     bot = Bot(
         token=se.bot_token,
         session=AiohttpSession(api=api),
-        default=DefaultBotProperties(parse_mode="HTML"),
+        default=DefaultBotProperties(parse_mode=ParseMode.MARKDOWN_V2),
     )
 
     storage = RedisStorage(
