@@ -54,7 +54,7 @@ async def get_question(
     chain_messages = fn.make_chain(raw_messages=messages, question=question)
     answer = fn.get_answer(chain_messages)
 
-    await message.answer(answer)
+    await message.answer(answer, parse_mode="MarkdownV2")
 
     message_db = MessageDB(content=question, timestamp=datetime.now().timestamp(), role="user")
     message_db_from_assistant = MessageDB(content=answer, timestamp=datetime.now().timestamp(), role="assistant")
